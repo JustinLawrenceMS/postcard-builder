@@ -11,15 +11,8 @@ class Recipient extends Model
     /** @use HasFactory<\Database\Factories\RecipientFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'name', 
-        'street_1', 
-        'street_2', 
-        'city', 
-        'state', 
-        'zip_code'
-    ];
-
+    protected $guarded = ['id'];
+    
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class);
