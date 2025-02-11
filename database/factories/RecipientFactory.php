@@ -17,7 +17,11 @@ class RecipientFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        ];
+            "name" => fake()->name(),
+            "street_1" => fake()->streetAddress(),
+            "street_2" => fake()->secondaryAddress(),
+            "city" => fake()->city(),
+            "state" => fake()->state(),
+            "zip_code" => fake()->postcode(),        ];
     }
 }
