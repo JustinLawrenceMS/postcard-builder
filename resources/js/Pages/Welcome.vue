@@ -1,6 +1,7 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
-import Form from '@/Components/Form.vue';
+import { reactive, provide } from "vue";
+import Form from "@/Components/Form.vue";
+import PostcardPreview from "@/Components/PostcardPreview.vue";
 defineProps({
     canLogin: {
         type: Boolean,
@@ -19,13 +20,26 @@ defineProps({
 });
 
 function handleImageError() {
-    document.getElementById('screenshot-container')?.classList.add('!hidden');
-    document.getElementById('docs-card')?.classList.add('!row-span-1');
-    document.getElementById('docs-card-content')?.classList.add('!flex-row');
-    document.getElementById('background')?.classList.add('!hidden');
+    document.getElementById("screenshot-container")?.classList.add("!hidden");
+    document.getElementById("docs-card")?.classList.add("!row-span-1");
+    document.getElementById("docs-card-content")?.classList.add("!flex-row");
+    document.getElementById("background")?.classList.add("!hidden");
 }
+
+const postcardState = reactive({
+    message: '',
+});
+
+provide('postcardState', postcardState);
 </script>
 
 <template>
-    <Form></Form>
+  <div class="flex flex-row">
+    <div class="w-1/2">
+      <Form />
+    </div>
+    <div class="w-1/2">
+      <PostcardPreview />
+    </div>
+  </div>
 </template>

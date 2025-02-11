@@ -18,8 +18,8 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            "recipient_id"=> Recipient::factory(),
-            "message"=> $this->faker->sentence,
+            "recipient_id"  => Recipient::factory(),
+            "message"   => $this->faker->sentence,
         ];
     }
 }

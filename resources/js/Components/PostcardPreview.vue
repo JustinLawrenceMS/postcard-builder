@@ -1,18 +1,16 @@
 <template>
-    <div class="w-100 h-100 border-black border-3">
-        <div class="message-preview">
-            <span v-if="message">{{ message }}</span>  
-    </div>
-</div>
+    <textarea
+        class="border border-black w-full h-full message-preview text-black"
+        v-model="postcardState.message"
+    ></textarea>
 </template>
+
 <script setup>
-import { ref } from "vue";
-import { usePage } from "@inertiajs/vue3";
+import { inject } from 'vue';
 
-const page = usePage();
-const message = ref(page.props.value.message);
+const postcardState = inject('postcardState');
 
-return {
-    message,
-};
+if (!postcardState) {
+  console.error('postcardState is not provided');
+}
 </script>
