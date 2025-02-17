@@ -28,7 +28,7 @@
                 </div>
                 <div class="flex flex-col flex-1">
                     <label for="zip" class="mb-1">Zip</label>
-                    <input class="w-full" v-model="zip" />
+                    <input class="w-full" v-model="zip_code" />
                 </div>
             </div>
             <div class="flex flex-col">
@@ -52,7 +52,7 @@ const street_1 = ref("");
 const street_2 = ref("");
 const city = ref("");
 const state = ref("");
-const zip = ref("");
+const zip_code = ref("");
 const message = ref("");
 
 const submit = () => {
@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
         street_2: street_2.value,
         city: city.value,
         state: state.value,
-        zip: zip.value,
+        zip_code: zip_code.value,
         message: message.value,
     });
 };

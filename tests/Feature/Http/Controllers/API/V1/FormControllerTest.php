@@ -24,6 +24,20 @@ class FormControllerTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+        $response->assertJson([
+            'message' => [
+                'message' => 'Hello, world!'
+            ],
+            'recipient' => [
+                'name' => 'John Doe',
+                'street_1' => '123 Main St',
+                'street_2' => 'Apt 4B',
+                'city' => 'Anytown',
+                'state' => 'CA',
+                'zip_code' => '12345'
+            ]
+        ]);
+        
         $this->assertDatabaseHas('recipients', [
             'name' => 'John Doe',
             'street_1' => '123 Main St',

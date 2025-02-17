@@ -19,6 +19,9 @@ class MessageTest extends TestCase
         $message = Message::factory()->create([
             'recipient_id' => $recipient->id
         ]);
-        $this->assertEquals($recipient->id, $message->recipient->id);
+    
+        $expectedRecipient = $message->recipient;
+
+        $this->assertTrue($recipient->is($expectedRecipient));
     }
 }

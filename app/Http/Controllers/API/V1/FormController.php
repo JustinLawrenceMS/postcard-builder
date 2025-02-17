@@ -5,12 +5,13 @@ namespace App\Http\Controllers\API\V1;
 use App\Models\Message;
 use App\Models\Recipient;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
-    public function save(Request $request): void
-    {
+    public function save(Request $request): JsonResponse
+    { 
         $recipient = Recipient::create([
             'name' => $request->input('name'),
             'street_1'  => $request->input('street_1'), 
@@ -25,7 +26,10 @@ class FormController extends Controller
             'message' => $request->message
         ]);
 
-        $recipient->save();
-        $message->save();
+        return response()->json([
+            'message'=> $message,
+            'recipient'=> $recipient
+        ]);
+        
     }
 }
